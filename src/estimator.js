@@ -18,17 +18,27 @@ const covid19ImpactEstimator = (data) => {
 
   const infectionsByRequestedTimei = currentlyInfectedI * (2 ** factor);
   const infectionsByRequestedTimeSevere = currentlyInfectedSevere * (2 ** factor);
+  const severeCasesByRequestedTimei = Math.floor(0.15 * infectionsByRequestedTimei);
+  const severeCasesByRequestedTimeSevere = Math.floor(0.15 * infectionsByRequestedTimeSevere);
+  const hospitalBedsByRequestedTimei = (Math.round(data.totalHospitalBeds * 0.35)) - severeCasesByRequestedTimei;
+  const hospitalBedsByRequestedTimeSevere = (Math.round(data.totalHospitalBeds)) - severeCasesByRequestedTimeSevere;
+
+
+
 
   const output = {
     data,
     impact: {
       currentlyInfected: currentlyInfectedI,
-      infectionsByRequestedTime: infectionsByRequestedTimei
-
+      infectionsByRequestedTime: infectionsByRequestedTimei,
+      severeCasesByRequestedTime: severeCasesByRequestedTimei,
+      hospitalBedsByRequestedTime: hospitalBedsByRequestedTimei
     },
     severeImpact: {
       currentlyInfected: currentlyInfectedSevere,
-      infectionsByRequestedTime: infectionsByRequestedTimeSevere
+      infectionsByRequestedTime: infectionsByRequestedTimeSevere,
+      severeCasesByRequestedTime: severeCasesByRequestedTimeSevere,
+      hospitalBedsByRequestedTime: hospitalBedsByRequestedTimeSevere
     }
   };
   return output;
