@@ -3,15 +3,17 @@ const covid19ImpactEstimator = (data) => {
   const currentlyInfectedSevere = data.reportedCases * 50;
   let factor;
   switch (data.periodType) {
-    case "days":
+    case 'days':
       factor = Math.floor(data.timeToElapse / 3);
       break;
-    case "weeks":
+    case 'weeks':
       factor = Math.floor((data.timeToElapse * 7) / 3);
       break;
-    case "months":
+    case 'months':
       factor = Math.floor((data.timeToElapse * 30) / 3);
       break;
+    default:
+      factor = Math.floor(data.timeToElapse / 3);
   }
 
   const infectionsByRequestedTimei = currentlyInfectedI * (2 ** factor);
