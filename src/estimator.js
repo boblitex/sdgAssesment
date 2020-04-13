@@ -24,10 +24,10 @@ const covid19ImpactEstimator = (data) => {
     - severeCasesByRequestedTimei);
   const hospitalBedsByRequestedTimeSevere = Math.trunc((data.totalHospitalBeds * 0.35)
     - severeCasesByRequestedTimeSevere);
-  const icuCasesi = Math.trunc((infectionsByRequestedTimei * 0.05));
-  const icuCasesSevere = Math.trunc((infectionsByRequestedTimeSevere * 0.05));
-  const ventilatorCasei = Math.trunc((infectionsByRequestedTimei * 0.02));
-  const ventilatorCaseSevere = Math.trunc((infectionsByRequestedTimeSevere * 0.02));
+  const icuCasesi = Math.trunc(infectionsByRequestedTimei * 0.05);
+  const icuCasesSevere = Math.trunc(infectionsByRequestedTimeSevere * 0.05);
+  const ventilatorCasei = Math.trunc(infectionsByRequestedTimei * 0.02);
+  const ventilatorCaseSevere = Math.trunc(infectionsByRequestedTimeSevere * 0.02);
   const dollarLosti = Math.trunc((infectionsByRequestedTimei * 0.65 * data.avgDailyIncomeInUSD)
     / data.timeToElapse);
   const dollarLostSevere = Math.trunc((infectionsByRequestedTimeSevere
