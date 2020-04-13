@@ -31,13 +31,13 @@ const covid19ImpactEstimator = (data) => {
       currentlyInfected: currentlyInfectedI,
       infectionsByRequestedTime: infectionsByRequestedTimei,
       severeCasesByRequestedTime: severeCasesByRequestedTimei,
-      hospitalBedsByRequestedTime: Math.trunc(hospitalBedsByRequestedTimei)
+      hospitalBedsByRequestedTime: Math.round(hospitalBedsByRequestedTimei)
     },
     severeImpact: {
       currentlyInfected: currentlyInfectedSevere,
       infectionsByRequestedTime: infectionsByRequestedTimeSevere,
       severeCasesByRequestedTime: severeCasesByRequestedTimeSevere,
-      hospitalBedsByRequestedTime: Math.trunc(hospitalBedsByRequestedTimeSevere)
+      hospitalBedsByRequestedTime: Math.round(hospitalBedsByRequestedTimeSevere)
     }
   };
   return output;
