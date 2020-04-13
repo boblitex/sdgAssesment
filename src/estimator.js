@@ -4,13 +4,13 @@ const covid19ImpactEstimator = (data) => {
   let factor;
   switch (data.periodType) {
     case 'days':
-      factor = Math.floor(data.timeToElapse / 3);
+      factor = Math.trunc(data.timeToElapse / 3);
       break;
     case 'weeks':
-      factor = Math.floor((data.timeToElapse * 7) / 3);
+      factor = Math.trunc((data.timeToElapse * 7) / 3);
       break;
     case 'months':
-      factor = Math.floor((data.timeToElapse * 30) / 3);
+      factor = Math.trunc((data.timeToElapse * 30) / 3);
       break;
     default:
       factor = Math.floor(data.timeToElapse / 3);
@@ -31,13 +31,13 @@ const covid19ImpactEstimator = (data) => {
       currentlyInfected: currentlyInfectedI,
       infectionsByRequestedTime: infectionsByRequestedTimei,
       severeCasesByRequestedTime: severeCasesByRequestedTimei,
-      hospitalBedsByRequestedTime: Math.round(hospitalBedsByRequestedTimei)
+      hospitalBedsByRequestedTime: Math.trunc(hospitalBedsByRequestedTimei)
     },
     severeImpact: {
       currentlyInfected: currentlyInfectedSevere,
       infectionsByRequestedTime: infectionsByRequestedTimeSevere,
       severeCasesByRequestedTime: severeCasesByRequestedTimeSevere,
-      hospitalBedsByRequestedTime: Math.round(hospitalBedsByRequestedTimeSevere)
+      hospitalBedsByRequestedTime: Math.trunc(hospitalBedsByRequestedTimeSevere)
     }
   };
   return output;
