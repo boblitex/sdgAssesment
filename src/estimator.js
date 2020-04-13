@@ -44,11 +44,10 @@ const covid19ImpactEstimator = (data) => {
       numberOfDays = data.timeToElapse;
   }
 
-
-  const dollarLosti = Math.trunc((infectionsByRequestedTimei * 0.65
+  const dollarLosti = Math.trunc((infectionsByRequestedTimei * data.region.avgDailyIncomePopulation
     * data.region.avgDailyIncomeInUSD) / numberOfDays);
   const dollarLostSevere = Math.trunc((infectionsByRequestedTimeSevere
-    * 0.65 * data.region.avgDailyIncomeInUSD)
+    * data.region.avgDailyIncomePopulation * data.region.avgDailyIncomeInUSD)
     / numberOfDays);
 
   const output = {
