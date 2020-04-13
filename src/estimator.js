@@ -18,11 +18,11 @@ const covid19ImpactEstimator = (data) => {
 
   const infectionsByRequestedTimei = currentlyInfectedI * (2 ** factor);
   const infectionsByRequestedTimeSevere = currentlyInfectedSevere * (2 ** factor);
-  const severeCasesByRequestedTimei = Math.floor(0.15 * infectionsByRequestedTimei);
-  const severeCasesByRequestedTimeSevere = Math.floor(0.15 * infectionsByRequestedTimeSevere);
-  const hospitalBedsByRequestedTimei = (Math.round(data.totalHospitalBeds * 0.35))
+  const severeCasesByRequestedTimei = Math.trunc(0.15 * infectionsByRequestedTimei);
+  const severeCasesByRequestedTimeSevere = Math.trunc(0.15 * infectionsByRequestedTimeSevere);
+  const hospitalBedsByRequestedTimei = (data.totalHospitalBeds * 0.35)
     - severeCasesByRequestedTimei;
-  const hospitalBedsByRequestedTimeSevere = (Math.round(data.totalHospitalBeds * 0.35))
+  const hospitalBedsByRequestedTimeSevere = (data.totalHospitalBeds * 0.35)
     - severeCasesByRequestedTimeSevere;
 
   const output = {
@@ -31,13 +31,13 @@ const covid19ImpactEstimator = (data) => {
       currentlyInfected: currentlyInfectedI,
       infectionsByRequestedTime: infectionsByRequestedTimei,
       severeCasesByRequestedTime: severeCasesByRequestedTimei,
-      hospitalBedsByRequestedTime: hospitalBedsByRequestedTimei
+      hospitalBedsByRequestedTime: Math.trunc(hospitalBedsByRequestedTimei)
     },
     severeImpact: {
       currentlyInfected: currentlyInfectedSevere,
       infectionsByRequestedTime: infectionsByRequestedTimeSevere,
       severeCasesByRequestedTime: severeCasesByRequestedTimeSevere,
-      hospitalBedsByRequestedTime: hospitalBedsByRequestedTimeSevere
+      hospitalBedsByRequestedTime: Math.trunc(hospitalBedsByRequestedTimeSevere)
     }
   };
   return output;
