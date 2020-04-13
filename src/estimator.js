@@ -28,11 +28,28 @@ const covid19ImpactEstimator = (data) => {
   const icuCasesSevere = Math.trunc(infectionsByRequestedTimeSevere * 0.05);
   const ventilatorCasei = Math.trunc(infectionsByRequestedTimei * 0.02);
   const ventilatorCaseSevere = Math.trunc(infectionsByRequestedTimeSevere * 0.02);
+
+  let numberOfDays;
+  switch (data.periodType) {
+    case 'days':
+      numberOfDays = data.timeToElapse;
+      break;
+    case 'weeks':
+      numberOfDays = data.timeToElapse * 7;
+      break;
+    case 'months':
+      numberOfDays = data.timeToElapse * 30;
+      break;
+    default:
+      numberOfDays = data.timeToElapse;
+  }
+
+
   const dollarLosti = Math.trunc((infectionsByRequestedTimei * 0.65
-    * data.region.avgDailyIncomeInUSD) / data.timeToElapse);
+    * data.region.avgDailyIncomeInUSD) / numberOfDays);
   const dollarLostSevere = Math.trunc((infectionsByRequestedTimeSevere
     * 0.65 * data.region.avgDailyIncomeInUSD)
-    / data.timeToElapse);
+    / numberOfDays);
 
   const output = {
     data,
