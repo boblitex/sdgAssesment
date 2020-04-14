@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Covid-19 Estimator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <nav class="nav-bar">
+            COVID-19 ESTIMATOR
+        </nav>
+    </header>
+    <section class="input">
+        <form action="" class="input-form">
+            <input class="input-field" 
+            data-population 
+            type="number" 
+            name="population" 
+            placeholder="population">
+            <input class="input-field"
+            data-time-to-elapse 
+            type="number" 
+            name="timeToElapse" 
+            placeholder="Time to Elapse">
+            <input class="input-field"
+            data-reported-cases 
+            type="number" 
+            name="reportedCases" 
+            placeholder="Reported Cases">
+            <input class="input-field"
+            data-total-hospital-beds
+            type="number" 
+            name="totalHospitalBeds" 
+            placeholder="Total Hospital Beds">
+            <label class="input-field input-field-label"for="Period Type">Select Period Type:</label>
+            <select data-period-type class="input-field">
+                <option value="days">days</option>
+                <option value="weeks">weeks</option>
+                <option value="months">months</option>
+            </select>
+            <input data-go- estimate type="button" value="Submit" class="button">
+        </form>
+
+    </section>
+
+
+    <script src="estimator.js"></script>
+</body>
+
+</html>
